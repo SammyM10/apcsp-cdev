@@ -10,7 +10,6 @@
 char CHARS[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 int CHARS_LEN = 62;
 
-
 char shiftChar(char c, int shift, int direction)
 {
   // implement the character shift here:
@@ -22,9 +21,34 @@ char shiftChar(char c, int shift, int direction)
   //   shiftChar('c', 3, 1) : 'f'
   //   shiftChar('S', 2, 0) : 'P'
   //   shiftChar('b', 3, 0) : '8'
+  if(direction == 1) {
+
+    for(int i = 0; i < CHARS_LEN; i++) {
+
+      if(c == CHARS[i]) {
+
+	return CHARS[(i + shift)%62]; 
+     }
+    }
+         
+   }
+
+  else {
+
+    shift *= -1;
+     for(int i = 0; i < CHARS_LEN; i++) {
+
+      if(c == CHARS[i]) {
+	while(i + shift < 0) {
+	  shift += 62;
+	}
+
+        return CHARS[(i + shift)];
+      }
+     }
+   }
+  return -1;
 }
-
-
 void encrypt(char str[], int shifts[], int shiftslen)
 {
   for (int i = 0; i < strlen(str); i++) 
