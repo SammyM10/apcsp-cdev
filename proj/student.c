@@ -86,8 +86,9 @@ void saveStudents(int key)
       sprintf(message2, "%ld", students[i]->id);
       caesarEncrypt(message2, key);
       fprintf(fp, "%s %s %s %s\n", students[i]->firstName,students[i]->lastName, message, message2);
-      fclose(fp);
+     
     }
+    fclose(fp);
   }
 }
 
